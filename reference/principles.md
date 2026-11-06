@@ -8,46 +8,50 @@ check. It leans on measured studies where they exist, and it says so where they 
 
 | Word | Verdict | What the evidence says |
 | --- | --- | --- |
-| Clear | Holds | The top complaint in every survey read, but readers mean "the information is there and unambiguous" more than "the sentence is tidy". |
-| Direct | Holds | Answer first, then detail. Web reading studies support it, agents read specific instructions better, and no source argues the other way. |
+| Clear | Holds | 88% of 146 practitioners rated clarity important. At IBM, ambiguity was the top priority, but that study defines it as missing information, so readers often mean "the information is there" more than "the sentence is tidy". |
+| Direct | Holds | Answer first, then detail. Web reading studies support it, agents read specific instructions better, and no source read argues the other way. |
 | Intentional | Holds as checks | No source uses the word. It becomes: each page has one job, one named reader, and a first sentence that says what the page is for. |
-| Short | Holds only as "no wasted words" | True of sentences, leads, summaries, single examples and first-run pages. It fails as a page-length rule. No study isolates length in developer docs, and all six blockers in the IBM study were content problems, not bloat. |
+| Short | Holds only as "no wasted words" | Style guides ask for it in sentences, leads, summaries and single examples, and quickstarts were the shortest type in the praised docs measured. It fails as a page-length rule. No study found isolates length in developer docs, and all six blockers in the IBM study were content problems, not bloat. |
 
 The guess leaves out what has the strongest evidence: correct, complete for the task, current, easy
 to find, with working examples that are explained.
 
 A better version of the guess, which is this rule set's synthesis and not a finding:
 
-> Correct, current and complete for the reader's task. Easy to find. Clear and direct. No longer
-> than that requires.
+> Correct, current and complete for the reader's task. Easy to find, with working examples. Clear
+> and direct. No longer than that requires.
+
+"Intentional" drops out of the wording because it became checks on each page, not because it failed.
 
 For agents the same shape holds. In SkillsBench, comprehensive skills scored 2.9 points below no
-skill at all, while detailed ones gained 18.8 and compact ones 17.1. Exhaustive hurts, detail
-doesn't, and nobody has held content fixed while varying length.
+skill at all, while detailed ones gained 18.8 and compact ones 17.1. That is an association: standard
+skills gained 10.1, below both, and no study found holds content fixed while varying length.
 
 ## What the evidence is strong on
 
 - **Content problems outweigh style problems.** Across 878 mined doc issues, completeness and
   up-to-dateness led. In a survey of 146 practitioners, 59% rated code and docs disagreeing as
   important.
-- **Examples work.** Adding them raised task success. Their absence is the top complaint.
-- **Install steps and tutorials hurt most when they fail.** About 65% of practitioners rated these
-  relevant problems.
-- **Readers scan and hunt.** They rarely read a page through, on the web or in developer docs.
-- **Wrong text misleads.** Agents adopt plausible wrong context over a correct prior more than 60% of
-  the time, and people miss polished wrong answers 39% of the time. Being wrong costs more than
+- **Examples work.** Adding them raised task success in a randomised test with 26 developers, and
+  a 2009 survey named examples the largest resource obstacle.
+- **Readers scan and hunt.** They rarely read a page through. The figures come from general web
+  reading, and small studies of developers show the same habit.
+- **Wrong text misleads.** Models adopt plausible wrong context over a correct prior more than 60% of
+  the time (read as an abstract), and 12 users missed polished wrong answers 39% of the time. Being wrong costs more than
   being long.
 
 ## What the evidence is weak on
 
 - **How long anything should be.** All the numeric limits come from style guides.
+- **What failed tutorials cost.** About 65% of 146 practitioners rated faulty tutorials a relevant
+  problem, which is opinion, not measured harm.
 - **Most wording rules.** Consistency is worth having, but passive voice has no measured
   comprehension cost, and readability formulas predict poorly.
 - **Which doc types a project needs.** No study. Diátaxis has no measured outcome.
 - **Business outcomes.** DORA's results conflict from year to year. Say "associated with", and
   promise fewer errors rather than faster reading: Meng found higher accuracy with added content, and
   Sohan and Meng found no significant saving in time.
-- **How wording affects agents.** Nobody has held content fixed and changed the wording.
+- **How wording affects agents.** No study found holds content fixed and changes the wording.
 
 ## How to use these rules
 
@@ -56,11 +60,11 @@ doesn't, and nobody has held content fixed while varying length.
 **Command** says who decides. Yes = a command decides. Flag = a command finds candidates and a person
 decides. No = a person decides.
 
-**A clean audit proves little.** Most checks a command can do are about presentation, and the worst
-problems (wrong, missing, out of date) aren't things a linter sees. Passing `audit.md` means the page
+**A clean audit proves little.** A command sees a dead link or an example that won't compile, but the worst
+problems (a wrong sentence, a missing topic) mostly need a person. Passing `audit.md` means the page
 is tidy. Whether it's good takes a review against the No rules.
 
-**Review in this order:** correct, complete for the task, findable, examples, then wording. Stop and
+**Review in this order:** correct and current, complete for the task, findable, examples, then wording. Stop and
 fix at the first level that fails. Polishing the wording of a wrong page is wasted work.
 
 **Severity follows confidence.** Block only on structure, including its exact lists of banned

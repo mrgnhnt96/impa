@@ -4,8 +4,8 @@ Every rule a command can decide or flag, and how. This is the build list for `im
 here has been run on a real repo yet, so the False alarms column is an estimate. Measure it on real
 docs and narrow or drop any check that fires on sound text.
 
-A clean audit proves little. These checks see presentation, and the worst problems (wrong, missing,
-out of date) mostly need a person. See `principles.md`.
+A clean audit proves little. These checks see dead links and examples that won't compile, and the worst
+problems (a wrong sentence, a missing topic) mostly need a person. See `principles.md`.
 
 ## How the audit behaves
 

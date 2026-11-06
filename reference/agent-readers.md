@@ -165,7 +165,7 @@ the mid-to-high 90s across every format. All of these need network access.
   Different agents, tasks and measures.
 - **Always loaded or on demand:** Vercel favours always loaded, Anthropic favours loading on demand,
   and Khatri finds no difference within wide error bars. A short always-loaded pointer to deeper
-  files fits both and is untested.
+  files fits both, and only Vercel's test has tried it.
 - **Length:** 200 lines, 500 lines, 32 KiB or none. Gloaguen finds no link with length. No limit is
   measured.
 - **Precedence:** the spec says the closest file wins. Codex and Claude concatenate. Copilot takes
