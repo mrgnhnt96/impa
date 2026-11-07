@@ -56,9 +56,10 @@ What was tested is what the image is for. Captures made to locate something or c
 the gains, and the same capture on every step did not. Gellevij drew that across studies, not head
 to head.
 
-Careful wording can match an image on accuracy, but it didn't match it on speed, so a screenshot
-mostly buys speed. V8's backing shows the same thing: a marked target was found about three times
-faster, with no more correct solutions.
+In one study of 44 people, careful wording matched images on finding things accurately but not on
+speed. V8's backing points the same way: a marked target was found about three times faster, with
+no more correct solutions. Other studies did cut errors, so speed is the steadiest gain, not the
+only one.
 
 ## Diagrams
 
