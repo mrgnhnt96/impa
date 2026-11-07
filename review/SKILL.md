@@ -29,12 +29,15 @@ If you wrote or changed these docs in this session, follow [round.md](round.md) 
    This round's request, in the user's words: "<prompt>"
    Scope: <what the user named, or "the whole doc set">
    Still open from the last round: none
-   Handed to a person: none
+   Handed to a person: <"none", or each item from "Waiting on a person" in the plan on its own line below this one>
 
    Return the method's report. Name any problem outside the scope that you happen to see, but don't go looking for one.
    ```
 
-2. Start it in the background. Add `--add-dir` for each path under `Other sources`:
+   The plan is the one project file to read here. Copy its *Waiting on a person* items unchanged, or
+   the reviewer reports them again under new IDs. Keep a blank line after that block.
+
+2. Start it in the background. Add `--add-dir` for each path under `Other sources` and `Captured output`:
 
    ```sh
    impa review --brief <brief> --add-dir <project>

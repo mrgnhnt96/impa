@@ -17,8 +17,8 @@ use serde_json::{Value, json};
 use project::Project;
 use rules::{A7, A10, Level, RULE_IDS, Rule};
 
-const USAGE: &str =
-    "usage: impa audit --dir <project> [--exclude <path>]... [--anchors github] [--json]";
+const USAGE: &str = "usage: impa audit --dir <project> [--exclude <path>]... [--anchors github] [--json] [--no-fail] [--part <n>]";
+const PART_SIZE: usize = 20_000;
 
 #[derive(ClapArgs)]
 #[command(args_override_self = true)]
@@ -35,6 +35,12 @@ pub struct Args {
     /// Print the full result as JSON
     #[arg(long)]
     json: bool,
+    /// Exit 0 even with block-level results, for a caller that reads them. A shell tool can cut a failed command's output short
+    #[arg(long)]
+    no_fail: bool,
+    /// Print one part of a long text result, for a caller whose shell tool can't return it whole. Starts at 1
+    #[arg(long, conflicts_with = "json", value_parser = clap::value_parser!(u32).range(1..))]
+    part: Option<u32>,
 }
 
 #[derive(Clone, Copy, Debug, ValueEnum)]
@@ -139,6 +145,35 @@ impl Report {
     }
 }
 
+fn split_into_parts(text: &str) -> Vec<String> {
+    let mut parts = vec![String::new()];
+    for line in text.split_inclusive('\n') {
+        let current = parts.last_mut().expect("parts starts with one");
+        if !current.is_empty() && current.len() + line.len() > PART_SIZE {
+            parts.push(line.to_string());
+        } else {
+            current.push_str(line);
+        }
+    }
+    parts
+}
+
+fn one_part(text: &str, number: usize) -> Result<String, String> {
+    let parts = split_into_parts(text);
+    let total = parts.len();
+    let part = parts
+        .get(number - 1)
+        .ok_or(format!("no part {number}: this result has {total}"))?;
+    Ok(match number {
+        _ if total == 1 => part.clone(),
+        _ if number == total => format!("{part}\nPart {number} of {total}, the last.\n"),
+        _ => format!(
+            "{part}\nPart {number} of {total}. Run again with --part {} for the next.\n",
+            number + 1
+        ),
+    })
+}
+
 pub fn audit(dir: &Path, exclude: &[String], anchors: Option<Renderer>) -> Result<Report, String> {
     let project = Project::load(dir)?;
     let pages = project.read_pages(exclude)?;
@@ -196,8 +231,17 @@ pub fn run(args: Args) -> u8 {
     let output = if args.json {
         serde_json::to_string_pretty(&report.to_json()).unwrap_or_default() + "\n"
     } else {
-        report.to_text()
+        match args.part {
+            Some(number) => match one_part(&report.to_text(), number as usize) {
+                Ok(part) => part,
+                Err(error) => {
+                    eprintln!("{error}");
+                    return 2;
+                }
+            },
+            None => report.to_text(),
+        }
     };
     let _ = io::stdout().write_all(output.as_bytes());
-    u8::from(report.count(Level::Block) > 0)
+    u8::from(report.count(Level::Block) > 0 && !args.no_fail)
 }

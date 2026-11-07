@@ -4,7 +4,7 @@ use std::process::Command;
 
 use tempfile::TempDir;
 
-use super::{Renderer, audit};
+use super::{PART_SIZE, Renderer, audit, one_part, split_into_parts};
 
 fn write(root: &Path, path: &str, text: &str) {
     let file = root.join(path);
@@ -757,4 +757,39 @@ fn a_file_name_is_not_a_vanished_code_name() {
 fn a_name_only_docs_mention_has_vanished() {
     let docs = "# Tool\n\nCall `old_name` to start.\n";
     fires(&vanished_with("fn new_name() {}\n", docs), "A10");
+}
+
+#[test]
+fn a_long_result_splits_on_line_ends_and_loses_nothing() {
+    let text = "a finding on one line\n".repeat(3_000);
+    let parts = split_into_parts(&text);
+    assert!(parts.len() > 1);
+    assert!(parts.iter().all(|part| part.len() <= PART_SIZE));
+    assert!(parts.iter().all(|part| part.ends_with('\n')));
+    assert_eq!(parts.concat(), text);
+}
+
+#[test]
+fn each_part_but_the_last_names_the_next() {
+    let text = "a finding on one line\n".repeat(3_000);
+    let total = split_into_parts(&text).len();
+    let first = one_part(&text, 1).unwrap();
+    assert!(first.ends_with(&format!(
+        "Part 1 of {total}. Run again with --part 2 for the next.\n"
+    )));
+    let last = one_part(&text, total).unwrap();
+    assert!(last.ends_with(&format!("Part {total} of {total}, the last.\n")));
+}
+
+#[test]
+fn a_short_result_is_one_part_with_nothing_added() {
+    assert_eq!(one_part("short\n", 1).unwrap(), "short\n");
+}
+
+#[test]
+fn a_part_past_the_end_is_refused() {
+    assert_eq!(
+        one_part("short\n", 2).unwrap_err(),
+        "no part 2: this result has 1"
+    );
 }
