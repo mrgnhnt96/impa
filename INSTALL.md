@@ -32,6 +32,7 @@ locked to read-only tools, and its cost isn't recorded.
 | --- | --- |
 | Claude Code | Both skills run in it |
 | Rust 1.85 or later (`cargo`) | Building the `impa` CLI in `cli/`, which uses the 2024 edition |
+| `git`, for `impa audit` | Listing a project's files and comparing docs with its history. Without it the audit walks the folder and skips the history check |
 | A Unix system such as macOS or Linux | The CLI uses Unix process calls, so it doesn't build on Windows |
 | The `claude` CLI on the PATH, with `--restricted` | `impa review` runs each review as a locked headless session. Set `IMPA_CLAUDE` to use another program |
 

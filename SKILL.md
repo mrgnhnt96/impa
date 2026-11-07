@@ -137,8 +137,10 @@ about it, and don't change the code unless they asked.
 impa audit --dir <project>
 ```
 
-Fix what's real. If the command fails, or the binary has no `audit`, tell the user the audit didn't
-run and go on. A clean audit proves little: it sees that a name exists, not that the
+Add `--anchors github` when people read the docs on GitHub, so link anchors get checked too.
+
+Fix what's real. Exit 1 means it found block-level results, not that it failed. If it exits 2, or
+the binary has no `audit`, tell the user the audit didn't run and go on. A clean audit proves little: it sees that a name exists, not that the
 sentence around it is true. Never fake a value to get a clean run.
 
 ### 7. Review the round

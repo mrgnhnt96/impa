@@ -45,7 +45,32 @@ It prints one line with the verdict, turns, seconds and cost, and writes `review
 | `--timeout <minutes>` | How long the review may run | `20` |
 | `--skill-dir <dir>` | Where the rule files are | `~/.claude/skills/impa` |
 
-The reviewer can read only the brief's folder, the skill and the `--add-dir` folders. It can't edit files, and its shell can run only `impa audit`. That subcommand isn't in the binary yet, so the report lists the audit under *Not checked*, with anything else it couldn't check.
+The reviewer can read only the brief's folder, the skill and the `--add-dir` folders. It can't edit files, and its shell can run only `impa audit`. Anything it couldn't check goes in the report under *Not checked*.
+
+## Audit docs by command
+
+`impa audit` checks what a command can decide, such as dead links, skipped heading levels, code blocks with no language, paths that don't exist and files too long for an agent. It reads the project and never writes to it. Run it on a project folder:
+
+```sh
+impa audit --dir <project>
+```
+
+| Flag | What it does | Default |
+| --- | --- | --- |
+| `--dir <project>` | The project to check | Required |
+| `--exclude <path>` | A path to leave out. Repeat it for each one | None |
+| `--anchors github` | Check link anchors against GitHub's heading slugs | Anchors aren't checked |
+| `--json` | Print the result as JSON | Text |
+
+Each finding gives its level, how sure it is, the rule, the file and line, and what's wrong. Block-level findings break a rule the command can decide. Warnings are candidates for a person to confirm. The last lines say which rules ran and which didn't.
+
+| Exit code | Meaning |
+| --- | --- |
+| 0 | No block-level findings. There may be warnings |
+| 1 | At least one block-level finding |
+| 2 | The audit couldn't run, for example the folder doesn't exist |
+
+[reference/audit.md](reference/audit.md) lists every rule, and which ones the command runs so far.
 
 ## Layout
 
@@ -54,7 +79,7 @@ The reviewer can read only the brief's folder, the skill and the `--add-dir` fol
 - `review/method.md`, `review/checklist.md`: how a reviewer works and every check. Only reviewers load these
 - `review/round.md`: how each round is reviewed
 - `reference/`: the rules for writing and reviewing docs, with `sources.md` holding the citations
-- `cli/`: the Rust binary, with `impa review` to start a locked reviewer
+- `cli/`: the Rust binary, with `impa review` to start a locked reviewer and `impa audit` to check docs by command
 
 ## Tests
 
