@@ -97,6 +97,22 @@ outside the docs, such as code, CI files or git history. Net = network. A dash m
 | S38 | Each error code found by the project's pattern in the source has an entry | Repo, Config | warn | Medium |
 | S39 | Error strings in source that have a doc entry but no link | Repo, Config | warn | High |
 
+## Visuals
+
+| Rule | Check | Needs | Level | False alarms |
+| --- | --- | --- | --- | --- |
+| V10 | No paragraph directly before an image or a diagram source block | - | warn | Medium |
+| V16 | Diagram source fails its tool's own syntax check. Skip tools that aren't installed | Repo, Config | block | Low |
+| V17 | An image whose alt text or file name says flowchart, with no diagram source or list next to it | - | warn | High |
+| V18 | A `mermaid` block with no `accTitle` or `accDescr` | - | warn | Low |
+| V21 | An autoplaying `video` tag, or a GIF, with no pause control | - | warn | High |
+| V25 | An embedded video with no plain link, or no paragraph after it | - | warn | Medium |
+| V31 | A heading, step or table found only inside a collapsed panel or tab | - | warn | High |
+| V32 | Inline SVG or `aria-label` text found nowhere else on the page | - | warn | Medium |
+| V33 | A rendered diagram with no source block or list next to it | - | warn | High |
+| V34 | A Markdown export missing the source or alt text its page has | Net | warn | Medium |
+| V35 | Export text that isn't on the page, such as a request to agents | Net | warn | Medium |
+
 ## Wording
 
 Every wording check warns. `wording.md` says why: Vue and Django ban minimising words and still ship
