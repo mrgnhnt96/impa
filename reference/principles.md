@@ -57,8 +57,8 @@ while varying length.
   promise fewer errors rather than faster reading: Meng found higher accuracy with added content, and
   Sohan and Meng found no significant saving in time.
 - **Visuals.** Screenshot studies run from benefit to harm, UML shows no general benefit, and video has
-  no consistent lead over text. Each helps with specific jobs, and most of the evidence is old or from
-  students. See `visuals.md`.
+  no consistent lead over text. Screenshots and diagrams help people with specific jobs, docs leave
+  video out, and most of the evidence is old or from students. See `visuals.md`.
 - **How wording affects agents.** The research found no study that holds content fixed and
   changes the wording.
 
@@ -88,7 +88,7 @@ text gets narrowed or dropped.
 | `structure.md` | Page layout, headings, lists, steps, links, error entries |
 | `wording.md` | Sentences, terms, words to avoid, house style |
 | `examples.md` | What a code example must do and how far it's proved |
-| `visuals.md` | When a screenshot, diagram or video earns its place, and how to fix walls of text |
+| `visuals.md` | When a screenshot or diagram earns its place for people, and how to fix walls of text |
 | `accuracy.md` | Keeping docs true to the code |
 | `agent-readers.md` | What agents need that people don't, and the reverse |
 | `leave-out.md` | What to cut and what never to cut |
