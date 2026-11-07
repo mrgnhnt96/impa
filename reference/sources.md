@@ -270,7 +270,7 @@ The proof ladder in `examples.md` is inference from those practices.
 | Rules | Claim | Strength | Source |
 | --- | --- | --- | --- |
 | | MRCR 91.9 at 256K to 78.3 at 1M, GraphWalks BFS 41.2 at 1M | Vendor, Opus 4.6 card, 2026 | https://www-cdn.anthropic.com/6a5fa276ac68b9aeb0c8b6af5fa36326e0e166dd.pdf |
-| | Focused 300 tokens beat 113,000 for all 18 models | Measured, 2025 | https://www.trychroma.com/research/context-rot |
+| | Focused 300 tokens beat 113,000 for every model tested. The report covers 18, not all in each test | Measured, 2025 | https://www.trychroma.com/research/context-rot |
 | | "Lost in the middle" on older models | Measured, 2023 | https://ar5iv.labs.arxiv.org/html/2307.03172 |
 | G8 | Accuracy falls with padding. Threshold no longer holds | Measured, 2024 | https://ar5iv.labs.arxiv.org/html/2402.14848 |
 | G8 | Spacing between related facts hurts | Measured, 2024 and 2025 | https://arxiv.org/html/2410.14641 |

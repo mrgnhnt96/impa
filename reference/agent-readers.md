@@ -31,7 +31,7 @@ unwritten requirements. That fit is this rule set's inference from the studies b
 | Finding | Status in 2026 |
 | --- | --- |
 | Long context still costs accuracy, and much less for simple lookup. Opus 4.6's card shows MRCR at 91.9 at 256K and 78.3 at 1M, and GraphWalks BFS at 41.2 at 1M | Later cards report no curve |
-| Focused input of about 300 tokens beat about 113,000 for all 18 models in Chroma's test | Not re-run on 2026 models |
+| Focused input of about 300 tokens beat about 113,000 for every model tested in Chroma's chat-history test | Not re-run on 2026 models |
 | Liu's "lost in the middle" curve has largely gone for single facts on large models | Don't rely on placing a fact at the top |
 | Distance between related facts still hurts (Levy, LongPiBench) | Likely. Hence G8 |
 | Near-miss text hurts more than random text (Cuconasu, Chroma) | Hence L6: the plausible old form is the danger |
