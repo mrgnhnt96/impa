@@ -291,7 +291,7 @@ excerpts, and the last column of `visuals.md` says where a rule stretches past w
 | V1, V5, V6, V7 | Screenshot when a UI element is hard to find, none where text is clear, just enough context | Doc, GitHub | https://docs.github.com/en/contributing/writing-for-github-docs/creating-screenshots |
 | V2, V10, V13 | Useful visual explanations, introduce each figure, big picture first | Doc, Google | https://developers.google.com/style/images |
 | V3 | 33 s with images against 30 s without, not significant, users preferred images | Measured, 10, 2021 | https://arxiv.org/pdf/2108.03356 |
-| V3, V22 | Preference for animation fell from 79.2% to 45.8%. Faster right after, slower a week later | Measured, 72, 2013 | https://www.ijee.ie/articles/Vol29-4/23_ijee2783ns.pdf |
+| V3 | Preference for animation fell from 79.2% to 45.8%. Faster right after, slower a week later | Measured, 72, 2013 | https://www.ijee.ie/articles/Vol29-4/23_ijee2783ns.pdf |
 | V4 | Use of colour | Doc, WCAG 1.4.1 | https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html |
 | V5 | Errors per step 1.83 to 0.95, time 13.80 s to 9.58 s, all tasks done 37.9% to 66.1%. Learning, help then removed | Measured, randomised, 176, 1995 | https://www.chi1995.chistatic.hosting.acm.org/proceedings/papers/smh_bdy.htm |
 | V5, V6, V7 | Captures for locating and checking gained (n=44, n=53). No gain in n=73 and n=42. Wording matched images on accuracy, not speed | Measured, 2002 thesis, paper manuals | https://ris.utwente.nl/ws/portalfiles/portal/6073421/t0000018.pdf |
@@ -313,26 +313,20 @@ excerpts, and the last column of `visuals.md` says where a rule stretches past w
 | V16 | Syntax checks | Doc, PlantUML | https://plantuml.com/command-line |
 | V16 | Validate a workspace | Doc, Structurizr | https://docs.structurizr.com/validate |
 | V16 | Component diagrams checked against code, dependency rules only | Doc, ArchUnit | https://www.archunit.org/userguide/html/000_Index.html |
-| V17, V33 | With source, Claude 3.5 Sonnet 92.64 Mermaid, 74.64 PlantUML, 70.00 image. 2024 models, flowcharts only, set size unconfirmed | Measured, 2024 | https://arxiv.org/pdf/2412.16420 |
-| V18 | `accTitle` and `accDescr` | Doc, Mermaid | https://mermaid.js.org/config/accessibility.html |
-| V18 | Screen reader announces only that the graphic starts and stops. Open since 2021 | Opinion, bug report | https://github.com/mermaid-js/mermaid/issues/2395 |
-| V19 | Same performance from video and text, far more lookups in text | Measured, randomised, 42 students, 2017 | https://ar5iv.labs.arxiv.org/html/1704.00074 |
-| V20 | Captions | Doc, WCAG 1.2.2 | https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded |
-| V20 | Silent recordings | Doc, WCAG 1.2.1 | https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded |
-| V21 | Pause, stop, hide | Doc, WCAG 2.2.2 | https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide |
-| V22 | Animation over static g=0.226, 59.3% of 140 comparisons no difference, computing 0.108 not significant | Measured, N=7,036, 2016 | https://archive-ouverte.unige.ch/unige:92234 |
-| V22 | Animation best for motions, pictures for arrangements | Measured, 2021 | https://doi.org/10.1007/s11251-021-09541-w |
-| V23 | Segmenting helps, with longer learning time. Exact values not retrieved | Measured, 2019 | https://doi.org/10.1007/s10648-018-9456-4 |
-| V24, V29 | Signalling retention g=0.53, transfer g=0.33, longer learning time. Blinking g=-0.56. Read through a review | Measured, N=12,201, 2018 | https://www.clearinghouse.edu.tum.de/wp-content/uploads/2018/12/CHU_KR-22_-Schneider_2017_Lernmaterial_Hervorhebungen.pdf |
-| V25, V32, V33, V34 | What three converters kept from one test page: alt text and links, diagram source, not edges or embeds | Opinion, this rule set's own test, one run, 2026-11-06 | This rule set's own experience |
-| V26 | Videos are harder to edit than text | Doc, Cloudflare | https://developers.cloudflare.com/style-guide/how-we-docs/how-we-video/maintenance/ |
-| V27 | Concise +58%, scannable +47%, all three +124%. One site, about 10 per condition, programmers excluded | Measured, 1997 | https://www.nngroup.com/articles/concise-scannable-and-objective-how-to-write-for-the-web/ |
-| V28 | Table beat text, d=0.39. Medical data | Measured, preregistered, 2,305, 2020 | https://doi.org/10.1098/rsos.190876 |
-| V29 | Unsignalled content recalled worse in a half-signalled text | Measured, 1996 | https://doi.org/10.1037/0022-0663.88.1.38 |
-| V30 | Bullets raised recall of items, lowered it for the text around them. Snippet only | Measured | https://benjamins.com/catalog/idj.21.2.06jan |
-| V31 | Accordions, no measured data | Opinion, NN/g | https://www.nngroup.com/articles/accordions-on-desktop/ |
-| V34 | Mermaid fences kept in `.md` exports, one page each | Opinion, this rule set's own check, 2026-11-06 | https://www.mintlify.com/docs/components/mermaid-diagrams.md |
-| V35 | A vendor's `.md` export opened with text asking agents to POST feedback | Opinion, seen on one page, 2026-11-06 | https://www.mintlify.com/docs/components/mermaid-diagrams.md |
+| | With source, Claude 3.5 Sonnet 92.64 Mermaid, 74.64 PlantUML, 70.00 image. 2024 models, flowcharts only, set size unconfirmed | Measured, 2024 | https://arxiv.org/pdf/2412.16420 |
+| V17 | `accTitle` and `accDescr` | Doc, Mermaid | https://mermaid.js.org/config/accessibility.html |
+| V17 | Screen reader announces only that the graphic starts and stops. Open since 2021 | Opinion, bug report | https://github.com/mermaid-js/mermaid/issues/2395 |
+| V18 | Same performance from video and text, far more lookups in text | Measured, randomised, 42 students, 2017 | https://ar5iv.labs.arxiv.org/html/1704.00074 |
+| | Animation over static g=0.226, 59.3% of 140 comparisons no difference, computing 0.108 not significant | Measured, N=7,036, 2016 | https://archive-ouverte.unige.ch/unige:92234 |
+| V21 | Signalling retention g=0.53, transfer g=0.33, longer learning time. Blinking g=-0.56. Read through a review | Measured, N=12,201, 2018 | https://www.clearinghouse.edu.tum.de/wp-content/uploads/2018/12/CHU_KR-22_-Schneider_2017_Lernmaterial_Hervorhebungen.pdf |
+| V24 | What three converters kept from one test page: alt text and links, diagram source, not edges or embeds | Opinion, this rule set's own test, one run, 2026-11-06 | This rule set's own experience |
+| V18 | Videos are harder to edit than text | Doc, Cloudflare | https://developers.cloudflare.com/style-guide/how-we-docs/how-we-video/maintenance/ |
+| V19 | Concise +58%, scannable +47%, all three +124%. One site, about 10 per condition, programmers excluded | Measured, 1997 | https://www.nngroup.com/articles/concise-scannable-and-objective-how-to-write-for-the-web/ |
+| V20 | Table beat text, d=0.39. Medical data | Measured, preregistered, 2,305, 2020 | https://doi.org/10.1098/rsos.190876 |
+| V21 | Unsignalled content recalled worse in a half-signalled text | Measured, 1996 | https://doi.org/10.1037/0022-0663.88.1.38 |
+| V22 | Bullets raised recall of items, lowered it for the text around them. Snippet only | Measured | https://benjamins.com/catalog/idj.21.2.06jan |
+| V23 | Accordions, no measured data | Opinion, NN/g | https://www.nngroup.com/articles/accordions-on-desktop/ |
+| V25 | A vendor's `.md` export opened with text asking agents to POST feedback | Opinion, seen on one page, 2026-11-06 | https://www.mintlify.com/docs/components/mermaid-diagrams.md |
 | | UML: no overall effect on comprehension, MD 0.01, CI -0.06 to 0.08. Baseline was code with comments removed. Prose and Table 4 disagree on time | Measured, 12 experiments, 333 observations, 2018 | https://alarcos.esi.uclm.es/ALARNET2/FILES/Articulos/2018-Empir%20Software%20Eng-Scanniello.pdf |
 | | UML: +54% functional correctness, +14% time not significant | Measured, 20 professionals, 2008, abstract only | https://doi.org/10.1109/tse.2008.15 |
 | | UML: correctness rose on the most complex tasks, no saving once updates counted | Measured, 2006, technical report | https://cms.simula.no/sites/default/files/publications/Arisholm.2005.2.pdf |
@@ -344,7 +338,7 @@ excerpts, and the last column of `visuals.md` says where a rule stretches past w
 
 **The biggest gaps.** No study holds content fixed while varying length. No study holds content
 fixed while varying wording. No study compares wrong docs with no docs on current agents. No study
-varies UI complexity for screenshots. No study compares diagram source with prose for agents.
+varies UI complexity for screenshots.
 
 **Standards and books not read:**
 
