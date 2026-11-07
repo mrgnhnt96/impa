@@ -50,15 +50,16 @@ and no earlier review. Treat a field it doesn't have as `none`.
 ## 2. Run the audit
 
 ```sh
-impa audit --dir <project>
+impa audit --dir <project> --no-fail --part 1
 ```
 
 Add `--anchors github` when people read the docs on GitHub, so link anchors get checked too.
 
-Do this first, and spend the review on what it can't decide. Exit 1 means it found block-level
-results, not that it failed. Its block-level results become
-findings after you check they're real. Its warnings are candidates: a command can't tell intent,
-and most of them need a person.
+Do this first, and spend the review on what it can't decide. If the last line names another part,
+run that part too, until a part says it's the last. The shell can't return a long result whole, and
+it cuts a failed command's output shorter still, so `--no-fail` and `--part` are what keep every
+result in view. Its block-level results become findings after you check they're real. Its warnings
+are candidates: a command can't tell intent, and most of them need a person.
 
 A clean audit proves little. It sees that a name exists, not that the sentence around it is true.
 
@@ -86,6 +87,10 @@ raise far more false alarms than that, so most suspicions should die here.
   The broad question drifts to style (A27).
 - **Try to disprove it.** Before reporting, look for what would make the doc right: another code
   path, a config override, a dependency default, a feature flag, a different platform.
+- **"The code never does this" needs the whole path.** "Never loaded", "ignored" and "turns it off"
+  each fall to one line you didn't read, such as a getter that reads the file or a check further
+  down that wins. Search for every reader of the value and follow it to where it's finally used.
+  A test name or a changelog line doesn't settle it.
 - **No evidence, no finding.** A drift finding quotes the doc line and the code line or command
   output that disagree with it (A28).
 - **Saying less isn't disagreeing.** A doc that leaves out a flag isn't inconsistent with the code.
@@ -93,10 +98,10 @@ raise far more false alarms than that, so most suspicions should die here.
 - **Say "the doc and the code disagree", not "the doc is wrong".** The code may be the bug: about
   half of resolved drift cases in one study were fixed in the source (A32).
 
-**Confirmed** means you read the doc line and the code that settles it, or saw it in captured or
-audit output. **Likely** means you reasoned from code you couldn't follow all the way, such as
-through a dependency, a framework or a runtime setting. Don't report a guess as either: leave it
-under *Not checked*.
+**Confirmed** means you read the doc line and the code that settles it, all the way to where the
+value is used, or saw it in captured or audit output. **Likely** means you reasoned from code you
+couldn't follow all the way, such as through a dependency, a framework or a runtime setting. Don't
+report a guess as either: leave it under *Not checked*.
 
 ## 5. Rate each finding
 

@@ -53,6 +53,38 @@ fn snapshot(root: &Path) -> Vec<(PathBuf, Vec<u8>)> {
 }
 
 #[test]
+fn no_fail_exits_zero_and_still_prints_the_block_level_results() {
+    let output = audit(&["--dir", BROKEN, "--no-fail"]);
+    assert_eq!(output.status.code(), Some(0), "{}", stdout(&output));
+    assert!(stdout(&output).contains("block  "), "{}", stdout(&output));
+}
+
+#[test]
+fn no_fail_still_exits_two_when_the_audit_cant_run() {
+    let output = audit(&["--dir", "/no/such/project", "--no-fail"]);
+    assert_eq!(output.status.code(), Some(2));
+}
+
+#[test]
+fn part_one_of_a_short_result_is_the_whole_result() {
+    let whole = audit(&["--dir", BROKEN, "--no-fail"]);
+    let part = audit(&["--dir", BROKEN, "--no-fail", "--part", "1"]);
+    assert_eq!(stdout(&part), stdout(&whole));
+}
+
+#[test]
+fn a_part_past_the_end_exits_two() {
+    let output = audit(&["--dir", BROKEN, "--no-fail", "--part", "9"]);
+    assert_eq!(output.status.code(), Some(2));
+}
+
+#[test]
+fn part_and_json_cant_be_used_together() {
+    let output = audit(&["--dir", BROKEN, "--json", "--part", "1"]);
+    assert_eq!(output.status.code(), Some(2));
+}
+
+#[test]
 fn clean_project_exits_zero_and_reports_nothing() {
     let output = audit(&["--dir", CLEAN, "--anchors", "github"]);
     assert_eq!(output.status.code(), Some(0), "{}", stdout(&output));

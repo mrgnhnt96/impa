@@ -61,14 +61,16 @@ impa audit --dir <project>
 | `--exclude <path>` | A path to leave out. Repeat it for each one | None |
 | `--anchors github` | Check link anchors against GitHub's heading slugs | Anchors aren't checked |
 | `--json` | Print the result as JSON | Text |
+| `--no-fail` | Exit 0 even with block-level findings, for a caller that reads them | Exit 1 on block-level findings |
+| `--part <n>` | Print one part of a long result, about 20,000 characters, for a shell tool that can't return it whole. Each part names the next. Can't be used with `--json` | The whole result |
 
 Each finding gives its level, how sure it is, the rule, the file and line, and what's wrong. Block-level findings break a rule the command can decide. Warnings are candidates for a person to confirm. The last lines say which rules ran and which didn't.
 
 | Exit code | Meaning |
 | --- | --- |
 | 0 | No block-level findings. There may be warnings |
-| 1 | At least one block-level finding |
-| 2 | The audit couldn't run, for example the folder doesn't exist |
+| 1 | At least one block-level finding, unless `--no-fail` is set |
+| 2 | The audit couldn't run, for example the folder doesn't exist or `--part` is past the last part |
 
 [reference/audit.md](reference/audit.md) lists every rule, and which ones the command runs so far.
 
