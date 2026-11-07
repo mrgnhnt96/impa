@@ -53,13 +53,16 @@ and no earlier review. Treat a field it doesn't have as `none`.
 impa audit --dir <project>
 ```
 
-Do this first, and spend the review on what it can't decide. Its block-level results become
+Add `--anchors github` when people read the docs on GitHub, so link anchors get checked too.
+
+Do this first, and spend the review on what it can't decide. Exit 1 means it found block-level
+results, not that it failed. Its block-level results become
 findings after you check they're real. Its warnings are candidates: a command can't tell intent,
 and most of them need a person.
 
 A clean audit proves little. It sees that a name exists, not that the sentence around it is true.
 
-If `impa audit` fails or isn't there, list it under *Not checked* and go on. Don't try to redo every
+If `impa audit` exits 2 or isn't there, list it under *Not checked* and go on. Don't try to redo every
 rule in `audit.md` by hand: check what the passes in `checklist.md` ask for.
 
 ## 3. Work through the checklist

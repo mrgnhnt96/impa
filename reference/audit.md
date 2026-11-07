@@ -1,8 +1,9 @@
 # Audit
 
-Every rule a command can decide or flag, and how. This is the build list for `impa audit`. Nothing
-here has been run on a real repo yet, so the False alarms column is an estimate. Measure it on real
-docs and narrow or drop any check that fires on sound text.
+Every rule a command can decide or flag, and how. This is the build list for `impa audit`. "Built so
+far" says which rules run today and what they did on real repos. For the rest, the False alarms
+column is still an estimate. Measure each on real docs and narrow or drop any check that fires on
+sound text.
 
 A clean audit proves little. These checks see dead links and examples that won't compile, and the worst
 problems (a wrong sentence, a missing topic) mostly need a person. See `principles.md`.
@@ -186,7 +187,7 @@ measured rate: 64% of raw reports were genuine, before the gate described here.
 | A5 | Include directives with a line range: `#L20-L30`, `:lines:` | Repo | warn | Low |
 | A6 | Each relative link's target exists | Repo | block | Low |
 | A7 | Each anchor matches a heading under the configured renderer's slug rule. Off until a renderer is set | Config | warn | Medium |
-| A8 | Code spans shaped like a path, absent at HEAD. Skip placeholders and paths marked as examples | Repo | warn | Medium |
+| A8 | Code spans shaped like a path with a folder, absent at HEAD. Skip placeholders and paths marked as examples | Repo | warn | Medium |
 | A9 | The project's name beside a version, compared with `Cargo.toml`, `package.json` or `pubspec.yaml`. Skip changelog and migration pages | Repo, Type | warn | Medium |
 | A10 | Code spans with `_`, `.`, `/`, `::` or camelCase that are absent at HEAD and were present at the commit that last changed the line. Skip changelogs, generated files and text sources | Repo | warn | Medium |
 | A11 | Flags and subcommands of the project's own program, compared with its `--help`. On request | Repo, Config | warn | Low |
@@ -228,6 +229,33 @@ measured rate: 64% of raw reports were genuine, before the gate described here.
 | G36 | A heading or block labelled "For agents", "For AI", "For LLMs" | - | warn | Medium |
 | G37 | Text starting "Agent:", "AI agents must", "If you are an agent" | - | warn | Low |
 | G38 | Zero-width and bidirectional characters, HTML hidden text, long base64 runs. Scan docs and instruction files | - | block | Low |
+
+## Built so far
+
+`impa audit` runs 34 rules: T2, T4, T15, S2, S3, S6, S9, S12, S14, S15, S16, S20, S25, S30, S32, S33, S34,
+E1, E9, E10, A4, A6, A7, A8, A10, A13, G2, G3, G14, G15, G18, G20, G38 and G39.
+
+It was measured on 69 local repos, 1,686 pages. All finished, the slowest in 16 seconds. Sampling
+each rule's findings changed these checks:
+
+| Rule | Measured | Now |
+| --- | --- | --- |
+| S12 | Agent prompts and graders have front matter and no H1 | No H1 is a finding only on a page with no front matter |
+| T2 | Other tools use `type:` too, such as `type: regex` | Runs only once a page uses a listed type |
+| T4 | A heading can name a marker: "TODO / FIXME" | Skips headings |
+| S25 | One sparse table gave a finding per cell | One finding per table |
+| S32 | Email autolinks counted as raw URLs | Only `http` and `https` count |
+| S33 | Badges share alt text | Skips links that are only an image |
+| A4 | An `import` in a README code block looked like an include | Reads imports only from `.mdx` pages, outside code |
+| A6 | Email autolinks looked like files | Skips email addresses |
+| A8 | Bare names and one-word folders were runtime files or other projects' files | Needs a folder and a name: `src/main.rs`, not `config.json` or `tokens/` |
+| A8 | `package:a/b.dart` and `a.rs:55-60` aren't missing files | Skips schemes, strips line ranges |
+| A10 | File names aren't code names, and `git grep` with thousands of patterns ran past 45 seconds | Skips file names, and scans the working tree in one pass, so uncommitted code counts |
+| A13 | Docs shorten JSON with `...`, `…` and `<placeholder>`, or show JSON Lines or a few members | All of these pass |
+
+Other choices: A7 stays off until `--anchors github` is passed. G3 reports a program it can't find as
+a candidate, because PATH differs by machine. The audit leaves out `test`, `tests`, `e2e`, `evals`
+and fixture folders, which hold templates and test data rather than docs.
 
 ## Order to build
 
