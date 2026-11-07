@@ -54,7 +54,7 @@ lines.
 | Exact commands and non-standard tools in context | They follow them literally | G2 |
 | Real enforcement for hard rules | Context isn't configuration | G6 |
 | Sections that survive being read alone | Pages get chunked, cut and summarised | S11, W24 |
-| Text in place of images | They get alt text and a file path | S34, S35 |
+| Text in place of images | They get alt text and a file path | S34, S35, V1, V32, V33 |
 | Headings that name each variant | Tabs arrive serialised into one long page | G34 |
 | A guard against silent loss | A fetch can return part of a page and the agent reports it "came through well" | G28, G29 |
 
@@ -69,7 +69,7 @@ Most of this list is inference. None of it is a reason to drop these things from
 | Overviews for orientation | Gloaguen found no use for agents. That people need them is inference |
 | Explanation of basics | Anthropic: "Claude is already very smart". That newcomers need them is inference |
 | Troubleshooting pages | 0.4% of repo doc interactions in Gao and Chen, repo-local only |
-| Screenshots as confirmation | n8n. Opinion |
+| Screenshots for finding and checking | Gellevij: gains came from captures made for those jobs. Paper manuals, students |
 | Reasons and motivation | Inference. No source. Gloaguen suggests extra context costs agents |
 
 Both readers need the same core: accuracy, one term per concept, no contradictions, one recommended

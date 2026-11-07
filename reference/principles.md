@@ -41,6 +41,10 @@ while varying length.
   the time (read as an abstract), and 12 users missed polished wrong answers 39% of the time. Being wrong costs more than
   being long.
 
+- **Cutting words and signalling structure help readers.** Signalling has the deepest pooled support
+  (retention g=0.53, transfer g=0.33), and in the one direct test cutting words beat formatting. Both
+  come from general material, not developer docs.
+
 ## What the evidence is weak on
 
 - **How long anything should be.** All the numeric limits come from style guides.
@@ -52,6 +56,9 @@ while varying length.
 - **Business outcomes.** DORA's results conflict from year to year. Say "associated with", and
   promise fewer errors rather than faster reading: Meng found higher accuracy with added content, and
   Sohan and Meng found no significant saving in time.
+- **Visuals.** Screenshot studies run from benefit to harm, UML shows no general benefit, and video has
+  no consistent lead over text. Each helps with specific jobs, and most of the evidence is old or from
+  students. See `visuals.md`.
 - **How wording affects agents.** The research found no study that holds content fixed and
   changes the wording.
 
@@ -81,6 +88,7 @@ text gets narrowed or dropped.
 | `structure.md` | Page layout, headings, lists, steps, links, error entries |
 | `wording.md` | Sentences, terms, words to avoid, house style |
 | `examples.md` | What a code example must do and how far it's proved |
+| `visuals.md` | When a screenshot, diagram or video earns its place, and how to fix walls of text |
 | `accuracy.md` | Keeping docs true to the code |
 | `agent-readers.md` | What agents need that people don't, and the reverse |
 | `leave-out.md` | What to cut and what never to cut |
