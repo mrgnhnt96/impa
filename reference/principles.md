@@ -8,10 +8,10 @@ check. It leans on measured studies where they exist, and it says so where they 
 
 | Word | Verdict | What the evidence says |
 | --- | --- | --- |
-| Clear | Holds | 88% of 146 practitioners rated clarity important. At IBM, ambiguity was the top priority, but that study defines it as missing information, so readers often mean "the information is there" more than "the sentence is tidy". |
+| Clear | Holds, on opinion | 88% of 146 practitioners rated clarity important, which is a rating, not a measured effect. Among IBM staff, ambiguity was the top priority, but that study defines it as missing information, so readers often mean "the information is there" more than "the sentence is tidy". |
 | Direct | Holds | Answer first, then detail. Web reading studies support it, agents read specific instructions better, and no source read argues the other way. |
 | Intentional | Holds as checks | No source uses the word. It becomes: each page has one job, one named reader, and a first sentence that says what the page is for. |
-| Short | Holds only as "no wasted words" | Style guides ask for it in sentences, leads, summaries and single examples, and quickstarts were the shortest type in the praised docs measured. It fails as a page-length rule. No study found isolates length in developer docs, and all six blockers in the IBM study were content problems, not bloat. |
+| Short | Holds only as "no wasted words" | Style guides ask for it in sentences, leads, summaries and single examples, and quickstarts were the shortest type in the praised docs measured. It fails as a page-length rule. The research found no study that isolates length in developer docs, and all six blockers in the IBM study were content problems, not bloat. |
 
 The guess leaves out what has the strongest evidence: correct, complete for the task, current, easy
 to find, with working examples that are explained.
@@ -21,11 +21,12 @@ A better version of the guess, which is this rule set's synthesis and not a find
 > Correct, current and complete for the reader's task. Easy to find, with working examples. Clear
 > and direct. No longer than that requires.
 
-"Intentional" drops out of the wording because it became checks on each page, not because it failed.
+"Intentional" drops out of the wording because no source uses the word. It lives on as checks on each page.
 
 For agents the same shape holds. In SkillsBench, comprehensive skills scored 2.9 points below no
 skill at all, while detailed ones gained 18.8 and compact ones 17.1. That is an association: standard
-skills gained 10.1, below both, and no study found holds content fixed while varying length.
+skills gained 10.1, below both, and the research found no study that holds content fixed
+while varying length.
 
 ## What the evidence is strong on
 
@@ -51,7 +52,8 @@ skills gained 10.1, below both, and no study found holds content fixed while var
 - **Business outcomes.** DORA's results conflict from year to year. Say "associated with", and
   promise fewer errors rather than faster reading: Meng found higher accuracy with added content, and
   Sohan and Meng found no significant saving in time.
-- **How wording affects agents.** No study found holds content fixed and changes the wording.
+- **How wording affects agents.** The research found no study that holds content fixed and
+  changes the wording.
 
 ## How to use these rules
 
@@ -64,7 +66,7 @@ decides. No = a person decides.
 problems (a wrong sentence, a missing topic) mostly need a person. Passing `audit.md` means the page
 is tidy. Whether it's good takes a review against the No rules.
 
-**Review in this order:** correct and current, complete for the task, findable, examples, then wording. Stop and
+**Review in this order, which is this rule set's judgment:** correct and current, complete for the task, findable, examples, then wording. Stop and
 fix at the first level that fails. Polishing the wording of a wrong page is wasted work.
 
 **Severity follows confidence.** Block only on structure, including its exact lists of banned
